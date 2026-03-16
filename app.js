@@ -172,17 +172,14 @@ document.addEventListener('keydown', e => {
 
 // ── Bootstrap ────────────────────────────────────────────────────────────────
 
-async function init() {
-  const response = await fetch('dados.json');
-  const data = await response.json();
-
-  renderHeader(data);
-  renderDashboard(data.estatisticas);
-  renderBreakdown(data.playlists);
-  renderSection('section-bandas',  'BANDAS',       '🎸', data.playlists.bandas,       'band');
-  renderSection('section-generos', 'GÊNERO / TEMA', '🎵', data.playlists.genero_tema,  'genre');
-  renderSection('section-geral',   'GERAL',         '💜', data.playlists.geral,         'general');
-  renderRules(data.regras);
+function init() {
+  renderHeader(DADOS);
+  renderDashboard(DADOS.estatisticas);
+  renderBreakdown(DADOS.playlists);
+  renderSection('section-bandas',  'BANDAS',        '🎸', DADOS.playlists.bandas,      'band');
+  renderSection('section-generos', 'GÊNERO / TEMA', '🎵', DADOS.playlists.genero_tema, 'genre');
+  renderSection('section-geral',   'GERAL',         '💜', DADOS.playlists.geral,        'general');
+  renderRules(DADOS.regras);
 }
 
 init();
